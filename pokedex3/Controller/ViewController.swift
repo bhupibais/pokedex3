@@ -38,6 +38,7 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
         let path = Bundle.main.path(forResource: "music", ofType: "mp3")!
         do {
             musicPlayer = try AVAudioPlayer(contentsOf: URL(string: path)!)
+           // musicPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
             musicPlayer.prepareToPlay()
             musicPlayer.numberOfLoops = -1
             musicPlayer.play()
@@ -130,6 +131,15 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
         }
         
     }
+    
+    
+    @IBAction func volSliderMoved(_ sender: UISlider) {
+        
+        var vol: Float!
+         vol = Float(sender.value)
+        musicPlayer.volume = Float(vol)
+    }
+    
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
